@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Update CSS variables with JS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <script>
+        const people = [
+            { name: 'Wes', year: 1988 },
+            { name: 'Kait', year: 1986 },
+            { name: 'Irv', year: 1970 },
+            { name: 'Lux', year: 2015 }
+        ];
+        const comments = [
+            { text: 'Love this!', id: 523423 },
+            { text: 'Super good', id: 823423 },
+            { text: 'You are the best', id: 2039842 },
+            { text: 'Ramen is my fav food ever', id: 123523 },
+            { text: 'Nice Nice Nice!', id: 542328 }
+        ];
+
+        //some function practise
+        //Array.prototype.some
+        //whether at least one person is 19
+        const isAdult = people.some(function(person){
+            const currentYear = (new Date()).getFullYear();
+            if(currentYear - person.year >= 19)
+            {
+                return true;
+            }
+        });
+
+        //Every function practise
+        //Array.prototype.every
+        //is everyone 19 ?
+        const AllAdult = people.every(function(person){
+            const currentYear = (new Date()).getFullYear();
+            if(currentYear - person.year >= 19)
+            {
+                return true;
+            }
+        });
+
+        //find function practise
+        //Array.prototype.find
+        //it is similar to filer but 
+        //find the comment which id is 823423
+        const com = comments.find(function(comment){
+            if(comment.id===823423)
+            {
+                return true;
+            }
+        });
+
+        //findIndex function practise
+        //Array.prototype.findindex
+        //it locate the index number of an element 
+        //delete the comment which id is 123523
+
+        const del = comments.findIndex(comment=>comment.id===123523);
+        comments.splice(del,1);
+        
+        console.table(comments);
+
+    </script>
+</body>
+
+</html>
