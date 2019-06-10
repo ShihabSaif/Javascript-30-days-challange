@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Update CSS variables with JS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="inbox">
+        <div class="item">
+            <input type="checkbox">
+            <p>This is an inbox layout 1.</p>
+        </div>
+
+        <div class="item">
+                <input type="checkbox">
+                <p>This is an inbox layout 2.</p>
+        </div>
+
+        <div class="item">
+                <input type="checkbox">
+                <p>This is an inbox layout 3.</p>
+        </div>
+
+        <div class="item">
+                <input type="checkbox">
+                <p>This is an inbox layout 4.</p>
+        </div>
+
+        <div class="item">
+                <input type="checkbox">
+                <p>This is an inbox layout 5.</p>
+        </div>
+
+        <div class="item">
+                <input type="checkbox">
+                <p>This is an inbox layout 6.</p>
+        </div>
+
+        <div class="item">
+                <input type="checkbox">
+                <p>This is an inbox layout 7.</p>
+        </div>
+
+        <div class="item">
+                <input type="checkbox">
+                <p>This is an inbox layout 8.</p>
+        </div>          
+    </div>
+
+
+
+    <script>
+        const allInput = document.querySelectorAll('.inbox input[type="checkbox"]');
+        allInput.forEach(chk => chk.addEventListener('click',handleCheckbox));
+
+        let lastChecked;
+
+        function handleCheckbox(e)
+        {
+            let inBetween=false;
+            if(e.shiftKey && this.checked)
+            {
+                allInput.forEach(chk=>{
+                    console.log(chk);
+                    if(chk===this || chk===lastChecked)
+                    {
+                        inBetween = !inBetween;
+                        console.log("start");
+                    }
+
+                    if(inBetween)
+                    {
+                        chk.checked=true;
+                    }
+                });
+            }
+            lastChecked=this;
+        }
+        //console.log(allInput);
+    </script>
+</body>
+
+</html>
